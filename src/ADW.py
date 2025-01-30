@@ -22,8 +22,8 @@ class ADW:
         self.nmax = nmax
         self.nmin = nmin
         
-        self.xrange = np.arange(extent[0], extent[1], res)
-        self.yrange = np.arange(extent[2], extent[3], res)
+        self.xrange = np.arange(extent[0], extent[1], res if extent[0] < extent[1] else res * -1)
+        self.yrange = np.arange(extent[2], extent[3], res if extent[2] < extent[3] else res * -1)
         self.xgrd, self.ygrd = np.meshgrid(
             self.xrange,
             self.yrange
