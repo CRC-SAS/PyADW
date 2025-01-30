@@ -41,7 +41,7 @@ class ADW:
             )
             ds_tmp = np.stack([self.obs, distance, self.obslons, self.obslats], axis=1)
             dx = ds_tmp[np.argwhere(distance < self.cdd).reshape(-1)][:]
-            npts = len(distance)
+            npts = len(dx)
             if npts > self.nmax:
                 sort_dist_idx = np.argsort(dx[::,1])
                 dx = dx[::][sort_dist_idx]
