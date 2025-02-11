@@ -27,8 +27,8 @@ setattr(EXTENT, 'xmax', -33.5)
 setattr(EXTENT, 'ymin', -57.0)
 setattr(EXTENT, 'ymax', -7.5)
 
-ROLLING_WINDOW_FILLNA = 9
-ROLLING_WINDOW_SMOOTHING = 9
+ROLLING_WINDOW_FILLNA = 21
+ROLLING_WINDOW_SMOOTHING = 5
 
 EXAMPLE_DATA = './data/example-data.csv'
 EXAMPLE_SHAPE = './data/example-shapefile.shp'
@@ -107,7 +107,7 @@ def main() -> int:
 
     # generar figuras para comparar diferentes valores de ROLLING_WINDOW_FILLNA
     if GEN_COMPARATIVE_PLOTS:
-        for i in [3,5,7,9,11]:
+        for i in [3,9,15,21]:
             # se rellenan los huecos
             raster_1 = raster.fillna(
                 raster.rolling(latitude=i, longitude=i, min_periods=1, center=True).mean())
@@ -127,7 +127,7 @@ def main() -> int:
 
     # generar figuras para comparar diferentes valores de ROLLING_WINDOW_SMOOTHING
     if GEN_COMPARATIVE_PLOTS:
-        for i in [3,5,7,9,11]:
+        for i in [3,5,7,9]:
             # se suaviza el raster
             raster_1 = raster.rolling(latitude=i, longitude=i, min_periods=1, center=True).mean()
             # recortar raster y graficar (raster suavizado)
