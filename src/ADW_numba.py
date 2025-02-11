@@ -156,5 +156,3 @@ class ADW:
         x = np.cos(rlat1) * np.sin(rlat2) - np.sin(rlat1) * np.cos(rlat2) * np.cos(rlon2 - rlon1)
 
         return np.arctan2(y, x)
-
-
